@@ -1,4 +1,4 @@
-# Cofres y Sombras
+# Paranoia
 
 > 8 cofres. 1 salida. Algo te persigue.
 
