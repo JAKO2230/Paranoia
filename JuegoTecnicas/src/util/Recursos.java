@@ -9,7 +9,7 @@ public class Recursos {
     // si la imagen no existe devuelvo null y la vista dibuja una figura
     public static Image cargarImagen(String ruta) {
         try {
-            URL url = Recursos.class.getResource("Resources/" + ruta);
+            URL url = Recursos.class.getResource("/Resources/" + ruta);
             if (url == null) {
                 return null;
             }

@@ -6,6 +6,7 @@ import util.CargadorNivel;
 import util.Sonido;
 import View.DialogoPuzzle;
 import View.PanelJuego;
+import View.PanelMenu;
 import View.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,19 +54,45 @@ public class JuegoController {
     }
 
     private void configurarBotonesMenu() {
-        ventana.getPanelMenu().getBotonUnJugador().addActionListener(new ActionListener() {
+        final PanelMenu menu = ventana.getPanelMenu();
+
+        menu.getBotonIniciar().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menu.mostrarModoJuego();
+            }
+        });
+
+        menu.getBotonInstrucciones().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menu.mostrarInstrucciones();
+            }
+        });
+
+        menu.getBotonUnJugador().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iniciarJuego(true);
             }
         });
 
-        ventana.getPanelMenu().getBotonDosJugadores().addActionListener(new ActionListener() {
+        menu.getBotonDosJugadores().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iniciarJuego(false);
             }
         });
 
-        ventana.getPanelMenu().getBotonSalir().addActionListener(new ActionListener() {
+        menu.getBotonVolver().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menu.volverAtras();
+            }
+        });
+
+        menu.getBotonInicio().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                menu.mostrarBienvenida();
+            }
+        });
+
+        menu.getBotonSalir().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Sonido.detenerMusica();
                 System.exit(0);
@@ -194,6 +221,7 @@ public class JuegoController {
         transicionando = false;
         monstruoActivo = false;
 
+        ventana.getPanelMenu().mostrarBienvenida();
         ventana.mostrarMenu();
         Sonido.detenerMusica();
         Sonido.reproducirMusica("menu.wav");
